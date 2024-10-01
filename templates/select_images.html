@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Images for Case ID: {{ case_id }}</title>
+</head>
+<body>
+    <h1>Select Images for Case ID: {{ case_id }}</h1>
+
+    <form method="POST">
+        {% if images %}
+            <div>
+                <h3>Available Images</h3>
+                {% for image in images %}
+                    <div>
+                        <img src="{{ image }}" alt="Image" style="width:100px;height:100px;">
+                        <label>
+                            <input type="checkbox" name="selected_images" value="{{ image }}">
+                            {{ image }}
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No images found for Case ID {{ case_id }}</p>
+        {% endif %}
+        <button type="submit">Submit Selected Images</button>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</body>
+</html>

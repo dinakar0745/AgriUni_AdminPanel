@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Solved Case Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="admin-button">
+            <a href="{{ url_for('admin') }}"><button>Back to Admin Panel</button></a>
+        </div>
+        <!-- Logout button -->
+        <div class="logout-button">
+            <a href="{{ url_for('logout') }}"><button>Logout</button></a>
+        </div>
+        <h2>Case Details for Case ID: {{ case['uniqueId'] }}</h2>
+
+        <div class="case-details">
+            <p><strong>Email:</strong> {{ case['email'] }}</p>
+            <p><strong>Crop Name:</strong> {{ case['cropName'] }}</p>
+            <p><strong>Category:</strong> {{ case['category'] }}</p>
+            <p><strong>Issue:</strong> {{ case['issue'] }}</p>
+            <p><strong>Solution:</strong> {{ case['solution'] }}</p>
+            <p><strong>Path:</strong> {{ case['path'] }}</p>
+        </div>
+
+        <div class="back-button">
+            <a href="{{ url_for('solved_cases') }}"><button>Back to Solved Cases</button></a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    </div><title>Submit Solution</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        const cropCategoryToIssue = {
+            'వరి': {
+                'పురుగు పేరు': ['ఉల్లి కోడు', 'కాండం తొలిచే పురుగు','ఆకు ముడత పురుగు','రైస్ హిస్పా / తాటాకు తెగులు','సుడి  దోమ','వరి ఈగ','ఆకు నల్లి','కంకి నల్లి','తామర పురుగులు','రెల్ల రాల్చు పురుగులు','ఎలుకలు'],
+
+                'తెగుళ్ల పేరు': ['అగ్గి తెగులు','బాక్టీరియా ఎండాకు తెగులు','కాండం కుళ్ళు','పాము పొడ తెగులు','గోధుమ మచ్చ తెగులు','పొట్ట కుళ్ళు తెగులు','గింజ మచ్చ తెగులు','కాటుక / మాని పండు తెగులు'],
+
+                'పోషక లోపం': ['జింక్','ఐరన్','బోరాన్'],
+
+                'ఇతర సమస్యలు': []
+            },
+            'మొక్కజొన్న': {
+                'పురుగు పేరు': ['కత్తెర పురుగు','గులాబీ రంగు పురుగు','మచ్చలు / చారల కాండం తొలిచే పురుగు','శనగ పచ్చ పురుగు','పేనుబంక'],
+                'తెగుళ్ల పేరు': ['టార్సి కమ్ ఆకుమాడు తెగులు','మేడీస్  ఆకుమాడు తెగులు','పాము పొడ తెగులు','త్రుప్పు తెగులు','బూజు తెగులు','వడలు తెగులు','మసి కుళ్ళు తెగులు'],
+                'పోషక లోపం': ['భాస్వర లోపం','జింక్ లోపం','బోరాన్ లోపం'],
+                'ఇతర సమస్యలు': []
+            },
+            'ప్రత్తి': {
+                'పురుగు పేరు': ['పచ్చ దోమ','పేనుబంక','తెల్ల దోమ','తామర పురుగు','పిండి నల్లి','ఎర్ర నల్లి','గులాబీ రంగు పురుగు','పొగాకు లద్దె పురుగు','శనగ పచ్చ పురుగు','మచ్చల /నత్త పురుగు','కాండం తొలిచే పురుగు','కాండం తొలిచే ముక్కు పురుగు','మురికి నల్లి','ఆకు చుట్టూ పురుగు'],
+                'తెగుళ్ల పేరు': ['ఫ్యుజేరియం ఎండు తెగులు','వెర్టీసీలియం ఎండు తెగులు','అల్టెర్నరియా ఆకు మరియు కాండం తెగులు','తల మాడు తెగులు','సర్కోస్పోరా ఆకు మచ్చ తెగులు','కోరినోస్పోరా ఆకు మచ్చ తెగులు','బూడిద తెగులు','గ్రే మిల్యూ','కాయ కుళ్ళు తెగులు'],
+                'పోషక లోపం': ['మెగ్నీషియం','భాస్వరం','బోరాన్','జింక్'],
+                'ఇతర సమస్యలు': []
+
+            },
+            'సోయా చిక్కుడు': {
+                'పురుగు పేరు': ['కాండం తొలిచే ఈగ','కాండం తొలిచే పెంకు పురుగు','రబ్బర్ పురుగు','పొగాకు లద్దె పురుగు','తెల్ల దోమ','తామర పురుగు'],
+                'తెగుళ్ల పేరు': ['వేరు కుళ్ళు తెగులు','మొవ్వు కుళ్ళు తెగులు','పల్లాకు / ఎల్లో మొజాయిక్ తెగులు','సర్కోస్పోరా ఆకు మచ్చ తెగులు','బాక్టీరియా తెగులు','కుంకుమ తెగులు','పక్షి కన్ను తెగులు'],
+                'పోషక లోపం': ['భాస్వర లోపం','జింక్ లోపం','బోరాన్ లోపం'],
+                'ఇతర సమస్యలు': []
+
+            },
+            'వేరు శనగ': {
+                'పురుగు పేరు': ['వేరు పురుగు','ఆకుముడత పురుగు','పొగాకు లద్దె పురుగు','శనగ పచ్చ పురుగు','తామర పురుగు','పచ్చ దీపపు పురుగు'],
+                'తెగుళ్ల పేరు': ['మొదలు కుళ్ళు','వేరు కుళ్ళు','కాండం కుళ్ళు','మొవ్వు కుళ్ళు తెగులు','కాండం కుళ్ళు వైరస్ తెగులు','తిక్క ఆకు మచ్చ తెగులు (ముందుగా వచ్చే)','తిక్క ఆకు మచ్చ తెగులు ( ఆలస్యంగా వచ్చే)','త్రుప్పు తెగులు'],
+                'పోషక లోపం': ['భాస్వర లోపం','జింక్ లోపం','బోరాన్ లోపం','జిప్సం'],
+                'ఇతర సమస్యలు': []
+            },
+            'నువ్వులు': {
+                'పురుగు పేరు': ['బీహారీ గొంగళి పురుగు','ఆకు గూడు మరియు కాయ తొలిచే పురుగు','కోడు ఈగ','పచ్చ దోమ','తామర పురుగు','పేనుబంక'],
+                'తెగుళ్ల పేరు': ['వేరు మరియు కాండం కుళ్ళు','వెర్రి తెగులు','అల్టెర్నరియా ఆకుమచ్చ తెగులు','సర్కోస్పోరా ఆకుమచ్చ తెగులు','బూడిద తెగులు'],
+                'పోషక లోపం': ['భాస్వర లోపం','జింక్ లోపం','బోరాన్ లోపం'],
+                'ఇతర సమస్యలు': []
+
+            },
+            'కంది': {
+                'పురుగు పేరు': ['ఆకు గూడు పురుగు','పచ్చ దోమ','పేనుబంక','మారుకా మచ్చల పురుగు','పూత పెంకు పురుగు','శనగ పచ్చ పురుగు','కాయ తొలిచే ఈగ'],
+                'తెగుళ్ల పేరు': ['ఫ్యుజేరియం వడలు తెగులు','మాక్రోఫోమినా వేరు కుళ్ళు తెగులు','పైటోప్తేరా ఎండు తెగులు','అల్టెర్నరియా ఆకుమచ్చ తెగులు','గొడ్డు మోతు తెగులు'],
+                'పోషక లోపం': ['జింక్ లోపం','బోరాన్ లోపం'],
+                'ఇతర సమస్యలు': []
+            },
+            'శనగ': {
+                'పురుగు పేరు': ['శనగ పచ్చ పురుగు','రబ్బర్ పురుగు'],
+                'తెగుళ్ల పేరు': ['ఫ్యుజేరియం ఎండు  తెగులు','మాక్రోఫోమినా ఎండు  తెగులు','త్రుప్పు తెగులు'],
+                'పోషక లోపం': ['జింక్ లోపం','బోరాన్ లోపం'],
+                'ఇతర సమస్యలు': []
+            },
+            'పెసర & మినుము': {
+                'పురుగు పేరు': ['పొగాకు లద్దె పురుగు','మారుకా మచ్చల పురుగు','తెల్ల దోమ','తామర పురుగు','చిత్త పురుగు','శనగ పచ్చ పురుగు'],
+                'తెగుళ్ల పేరు': ['సర్కోస్పోరా ఆకు మచ్చ తెగులు','బాక్టీరియా ఆకు మచ్చ తెగులు','బూడిద తెగులు','త్రుప్పు /కుంకుమ తెగులు','పక్షి కన్ను తెగులు','పల్లాకు తెగులు'],
+                'పోషక లోపం': ['భాస్వర లోపం','జింక్ లోపం','బోరాన్ లోపం'],
+                'ఇతర సమస్యలు': []
+            },
+            'మిరప': {
+                'పురుగు పేరు': ['నల్ల తామర పురుగు','తామర పురుగు  (పై ముడత)','తెల్ల నల్లి (కింది ముడత)','పేనుబంక','పూత / గండు పురుగు','పొగాకు లద్దె పురుగు','శనగ పచ్చ పురుగు','వేరు పురుగు','నులి పురుగులు'],
+                'తెగుళ్ల పేరు': ['నారు కుళ్ళు తెగులు','వేరు కుళ్ళు తెగులు','కొమ్మ ఎండు మరియు కాయ కుళ్ళు తెగుళ్లు','కోయినోపోరా కొమ్మ కుళ్ళు తెగులు','బూడిద తెగులు','ఆకుముడత వైరస్ తెగులు','మొవ్వు కుళ్ళు తెగులు','బాక్టీరియా ఆకుమచ్చ తెగులు'],
+                'పోషక లోపం': ['భాస్వర లోపం','జింక్ లోపం','బోరాన్ లోపం'],
+                'ఇతర సమస్యలు': []
+            }
+
+        };
+
+        // Solution mapping
+        const specificSolutions = {
+            'వరి': {
+                'పురుగు పేరు': {
+                    'ఉల్లి కోడు': 'alpha',
+                    'కాండం తొలిచే పురుగు': 'beta'
+                }
+            }
+        };
+
+        function updateCategoryOptions() {
+            const cropSelect = document.getElementById('crop');
+            const categorySelect = document.getElementById('category');
+            const issueSelect = document.getElementById('issue');
+            const selectedCrop = cropSelect.value;
+
+            categorySelect.innerHTML = '<option value="">Select Category</option>';
+            issueSelect.innerHTML = '<option value="">Select Issue</option>';
+
+            if (selectedCrop && cropCategoryToIssue[selectedCrop]) {
+                const categories = Object.keys(cropCategoryToIssue[selectedCrop]);
+                categories.forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category;
+                    option.textContent = category;
+                    categorySelect.appendChild(option);
+                });
+            }
+        }
+
+        function updateIssueOptions() {
+            const cropSelect = document.getElementById('crop');
+            const categorySelect = document.getElementById('category');
+            const issueSelect = document.getElementById('issue');
+            const selectedCrop = cropSelect.value;
+            const selectedCategory = categorySelect.value;
+
+            issueSelect.innerHTML = '<option value="">Select Issue</option>';
+
+            if (selectedCrop && selectedCategory && cropCategoryToIssue[selectedCrop][selectedCategory]) {
+                const issues = cropCategoryToIssue[selectedCrop][selectedCategory];
+                issues.forEach(issue => {
+                    const option = document.createElement('option');
+                    option.value = issue;
+                    option.textContent = issue;
+                    issueSelect.appendChild(option);
+                });
+            }
+        }
+
+        function checkForSolution() {
+        const cropSelect = document.getElementById('crop').value;
+        const categorySelect = document.getElementById('category').value;
+        const issueSelect = document.getElementById('issue').value;
+        const solutionDisplay = document.getElementById('solutionDisplay');
+        const solutionText = document.getElementById('solutionText');
+        const submitButton = document.getElementById('submitBtn');
+        const hiddenSolution = document.getElementById('hiddenSolution');
+
+        if (cropSelect && categorySelect && issueSelect &&
+            specificSolutions[cropSelect] &&
+            specificSolutions[cropSelect][categorySelect] &&
+            specificSolutions[cropSelect][categorySelect][issueSelect]) {
+
+            const solution = specificSolutions[cropSelect][categorySelect][issueSelect];
+            solutionText.textContent = `Solution: ${solution}`;
+            solutionDisplay.style.display = 'block';
+            submitButton.style.display = 'block';
+            hiddenSolution.value = solution; // Set the hidden input value
+        } else {
+            solutionDisplay.style.display = 'none';
+            submitButton.style.display = 'none';
+            hiddenSolution.value = ''; // Clear the hidden input value
+        }
+    }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const cropSelect = document.getElementById('crop');
+            const categorySelect = document.getElementById('category');
+            const issueSelect = document.getElementById('issue');
+
+            cropSelect.addEventListener('change', updateCategoryOptions);
+            categorySelect.addEventListener('change', updateIssueOptions);
+            issueSelect.addEventListener('change', checkForSolution);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="logout-button">
+            <a href="{{ url_for('logout') }}"><button>Logout</button></a>
+        </div>
+        <h2>Submit Solution for Case ID: {{ case_id }}</h2>
+        <div>
+            {% for file in files %}
+                <img src="{{ file }}" alt="Image not found" style="width:100%; max-width:300px;">
+            {% endfor %}
+        </div>
+        <form method="POST">
+            <!-- Crop Dropdown -->
+            <label for="crop">Select Crop:</label>
+            <select name="crop" id="crop" onchange="updateCategoryOptions()" required>
+                <option value="">Select an Opion</option>
+                <option value="వరి">వరి</option>
+                <option value="ప్రత్తి">ప్రత్తి</option>
+                <option value="సోయా చిక్కుడు">సోయా చిక్కుడు</option>
+                <option value="మొక్కజొన్న">మొక్కజొన్న</option>
+                <option value="వేరు శనగ">వేరు శనగ</option>
+                <option value="నువ్వులు">నువ్వులు</option>
+                <option value="కంది">కంది</option>
+                <option value="శనగ">శనగ</option>
+                <option value="పెసర & మినుము">పెసర & మినుము</option>
+                <option value="మిరప">మిరప</option>
+            </select><br>
+
+            <!-- Category Dropdown -->
+            <label for="category">Select Category:</label>
+            <select name="category" id="category" required>
+                <option value="">Select Category</option>
+            </select><br>
+
+            <!-- Issue Dropdown -->
+            <label for="issue">Select Issue:</label>
+            <select name="issue" id="issue" required>
+                <option value="">Select Issue</option>
+            </select><br>
+
+            <!-- Solution Display -->
+            <div id="solutionDisplay" style="display:none;">
+                <h4>Solution:</h4>
+                <pre id="solutionText"></pre>
+            </div>
+            <input type="hidden" name="solution" id="hiddenSolution">
+
+            <!-- Submit Button -->
+            <button id="submitBtn" type="submit" style="display:none;">Submit Solution</button>
+        </form>
+
+        <!-- Edit Case button -->
+        <!-- Modify the button to redirect to the edit page -->
+<button id="editBtn" type="button" onclick="window.location.href='/edit-case/{{ case_id }}'">
+    Edit Case ID
+</button>
+
+    </div>
+</body>
+</html>

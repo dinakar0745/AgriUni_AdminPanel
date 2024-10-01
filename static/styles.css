@@ -1,0 +1,147 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    margin-top: 60px; /* Adjusted to make room for the logout button */
+}
+
+h2 {
+    color: #444;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form input, form textarea, form button {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+.case-block {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #fafafa;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+}
+
+.case-block a {
+    color: #007bff;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.case-block a:hover {
+    color: #0056b3;
+}
+
+.logout-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.logout-button button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.logout-button button:hover {
+    background-color: #8d0d1a;
+}
+
+.admin-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.admin-button button {
+    background-color: #33b249;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.admin-button button:hover {
+    background-color: #088c1e;
+}
+
+.admin-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.admin-buttons a {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.admin-buttons a:hover {
+    background-color: #0056b3;
+}

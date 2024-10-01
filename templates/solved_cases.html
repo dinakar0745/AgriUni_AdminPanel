@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Solved Cases</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="admin-button">
+            <a href="{{ url_for('admin') }}"><button>Back to Admin Panel</button></a>
+        </div>
+        <!-- Logout button -->
+        <div class="logout-button">
+            <a href="{{ url_for('logout') }}"><button>Logout</button></a>
+        </div>
+        <h2>Solved Cases</h2>
+        {% for case_id, case_name in cases.items() %}
+            <div class="case-block">
+                <a href="{{ url_for('solved_case', case_id=case_id) }}">{{ case_name }}</a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

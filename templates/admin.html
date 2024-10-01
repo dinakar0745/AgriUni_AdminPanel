@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+            
+            <!-- Logout button -->
+            <div class="logout-button">
+                <a href="{{ url_for('logout') }}"><button>Logout</button></a>
+            </div>
+        <h2>Admin Page</h2>
+        <div class="admin-buttons">
+            <a href="{{ url_for('pending_cases') }}">Pending Cases</a>
+            <a href="{{ url_for('solved_cases') }}">Solved Cases</a>
+        </div>
+    </div>
+</body>
+</html>
